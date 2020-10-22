@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
-const User = require("./userModel.js");
+const db = require("./models");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -14,25 +14,38 @@ app.use(express.static("public"));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", { useNewUrlParser: true });
 
 
+app.get("/exercise?", (req, res) => {
+  db.cardio.find({})
+    .then(dbNote => {
+      res.json(dbNote);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+app.get("/exercise", (req, res) => {
+  db.resistance.find({})
+    .then(dbNote => {
+      res.json(dbNote);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+app.get("/stats", (req, res) => {
+  db.cardio.find({})
+    .then(dbNote => {
+      res.json(dbNote);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.listen(3000, () => {
-    console.log("App running on port 3000!");
-  });
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`);
+});
