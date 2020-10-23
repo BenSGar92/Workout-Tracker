@@ -1,77 +1,5 @@
-// const express = require("express");
- const db = require("../models");
-// const app = express();
-
-// app.get("/exercise", (req, res) => {
-    // db.Workout.find({})
-    //   .then(dbNote => {
-    //       console.log(dbNote);
-    //     res.json(dbNote);
-    //   })
-    //   .catch(err => {
-    //     res.json(err);
-    //   });
-    // res.send("working");
-//   });
-  
-//   app.get("/exercise", (req, res) => {
-//     db.resistance.find({})
-//       .then(dbNote => {
-//         res.json(dbNote);
-//       })
-//       .catch(err => {
-//         res.json(err);
-//       });
-//   });
-  
-//   app.get("/stats", (req, res) => {
-//     db.cardio.find({})
-//       .then(dbNote => {
-//         res.json(dbNote);
-//       })
-//       .catch(err => {
-//         res.json(err)local;
-//     });
-// });
-
-// module.exports = app;
-
-
+const db = require("../models");
 const router = require("express").Router();
-//const Transaction = require("../models/transaction.js");
-
-// router.post("/api/transaction", ({ body }, res) => {
-//   Transaction.create(body)
-//     .then(dbTransaction => {
-//       res.json(dbTransaction);
-//     })
-//     .catch(err => {
-//       res.status(400).json(err);
-//     });
-// });
-
-// router.post("/api/transaction/bulk", ({ body }, res) => {
-//   Transaction.insertMany(body)
-//     .then(dbTransaction => {
-//       res.json(dbTransaction);
-//     })
-//     .catch(err => {
-//       res.status(400).json(err);
-//     });
-// });
-
-///api/workouts/range 
-
-// router.get("/exercise", (req, res) => {
-//     db.Workout.find({})
-//       .then(dbNote => {
-//           console.log(dbNote);
-//         res.json(dbNote);
-//       })
-//       .catch(err => {
-//         res.json(err);
-//       });
-// });
 
 router.get("/api/workouts/range", (req, res) => {
     db.Workout.find({})
@@ -94,12 +22,7 @@ router.get("/api/workouts", (req, res) => {
       });
 });
 
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//non working route
 router.post("/api/workouts", (req, res) => {
-    console.log("working?");
-    console.log(req.body);
     db.Workout.create(req.body)
       .then(dbWorkout => {
           console.log(dbWorkout);
